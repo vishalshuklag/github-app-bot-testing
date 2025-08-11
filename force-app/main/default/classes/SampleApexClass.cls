@@ -64,4 +64,13 @@ public class SampleApexClass {
         }
     }
 
+    public void getGlobalDescribeInLoopCorrected() {
+        Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get(objectName).getDescribe().fields.getMap();
+        Set<String> fieldNameSet = new Set<String> {'Id'};
+        for (String fieldNameOrDefaultValue : fieldNameOrDefaultValueList) {
+            if (fieldMap.containsKey(fieldNameOrDefaultValue.trim())) {
+                fieldNameSet.add(fieldNameOrDefaultValue);
+            }
+        }
+    }
 }
