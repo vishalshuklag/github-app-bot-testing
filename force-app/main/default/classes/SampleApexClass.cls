@@ -1,20 +1,16 @@
-public class SampleApexClass {
+public inherited sharing class SampleApexClass {
     public SampleApexClass() {
-        List<Account> accountList = [SELECT Id,Name,AccountNumber, BillingCity, Phone, Mobile, Fax FROM Account LIMIT 10000];
-        if(accountList.size()>0){beak;}else{continue;}
-    }
-
-    public static void name() {
-        Integer i = 0;
-        while (i < 5) {
-            insert new Account(Name='Test Account ' + i);
-            i++;
+        List<Account> accountList = [SELECT Id,Name,AccountNumber, BillingCity, Phone, Mobile, Fax FROM Account WITH USER_MODE LIMIT 100];
+        if(accountList.size()>0){
+            break;
+        }else{
+            continue;
         }
     }
 
     public void databaseMethodInsideOfLoop(List<Account> accounts) {
         for (Account a : accounts) {
-            Database.insert(a);
+            Database.insert(a, AccessLevel.SYSTEM_MODE);
         }
     }
 
@@ -22,13 +18,13 @@ public class SampleApexClass {
         for (Integer i = 0; i < 151; i++) {
             Account account;
             // ...
-            insert account;
+            insert as user account;
         }
     }
 
     public void soqlInsideOfLoop() {
         for (Integer i = 0; i < 10; i++) {
-            List<Account> accounts = [SELECT Id FROM Account];
+            List<Account> accounts = [SELECT Id FROM Account WHERE Name LIKE 'Vishal%' WITH USER_MODE ];
         }
     }
 
@@ -76,7 +72,7 @@ public class SampleApexClass {
 
     public void describeSObjectsInLoop() {
         Map<String, Schema.SObjectField> fieldMap = Schema.describeSObjects(new List<String> { 'Account' })[0].fields.getMap();
-        Set<String> fieldNameSet = new Set<String> {'Id'}
+        Set<String> fieldNameSet = new Set<String> {'Id'};
         for (String fieldNameOrDefaultValue : fieldNameOrDefaultValueList) {
             if (fieldMap.containsKey(fieldNameOrDefaultValue.trim())) {
                 fieldNameSet.add(fieldNameOrDefaultValue);
