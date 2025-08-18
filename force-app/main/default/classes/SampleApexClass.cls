@@ -11,6 +11,7 @@ public inherited sharing class SampleApexClass {
     public void databaseMethodInsideOfLoop(List<Account> accounts) {
         for (Account a : accounts) {
             Database.insert(a, AccessLevel.SYSTEM_MODE);
+            Database.insert(a);
         }
     }
 
