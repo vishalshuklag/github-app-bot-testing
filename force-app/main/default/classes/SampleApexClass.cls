@@ -76,7 +76,7 @@ public class SampleApexClass {
 
     public void describeSObjectsInLoop() {
         Map<String, Schema.SObjectField> fieldMap = Schema.describeSObjects(new List<String> { 'Account' })[0].fields.getMap();
-        Set<String> fieldNameSet = new Set<String> {'Id'};
+        Set<String> fieldNameSet = new Set<String> {'Id'}
         for (String fieldNameOrDefaultValue : fieldNameOrDefaultValueList) {
             if (fieldMap.containsKey(fieldNameOrDefaultValue.trim())) {
                 fieldNameSet.add(fieldNameOrDefaultValue);
