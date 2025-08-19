@@ -94,4 +94,4 @@ public class SampleApexClass {
             System.scheduleBatch(new MyBatch(), 'x', 1);
         }
     }
-}
+} 
