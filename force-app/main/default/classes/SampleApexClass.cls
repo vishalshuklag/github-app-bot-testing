@@ -129,7 +129,7 @@ public inherited sharing class SampleApexClass {
     /**
      * @description - Retrieves the describe information for multiple SObjects inside a loop.
      * @notes - This is a sample method for demonstration purposes.
-     * @example - describeSObjectsInLoop();
+     * @example - describeSObjectsInLoop(); 
      */
     public void describeSObjectsInLoop() {
         Map<String, Schema.SObjectField> fieldMap = Schema.describeSObjects(new List<String> { 'Account' })[0].fields.getMap();
