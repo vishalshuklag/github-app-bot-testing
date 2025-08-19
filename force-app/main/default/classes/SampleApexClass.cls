@@ -4,23 +4,7 @@
  * @date - 2023-10-05
  * @notes - This is a sample Apex class for demonstration purposes.
  */
-public inherited sharing class SampleApexClass {
-
-    /**
-     * Constructor for SampleApexClass
-     * @description - Initializes the class and fetches a list of accounts.
-     * @notes - This is a sample constructor for demonstration purposes.
-     * @example - SampleApexClass sample = new SampleApexClass();
-     * 
-     */
-    public SampleApexClass() {
-        List<Account> accountList = [SELECT Id,Name,AccountNumber, BillingCity, Phone, Mobile, Fax FROM Account WITH USER_MODE LIMIT 100];
-        if(accountList.size()>0){
-            break;
-        }else{
-            continue;
-        }
-    }
+public class SampleApexClass {
 
     /**
      * @description - Inserts a list of accounts into the database.
@@ -108,36 +92,6 @@ public inherited sharing class SampleApexClass {
             System.enqueueJob(new MyQueueable());
             System.schedule('x', '0 0 0 1 1 ?', new MySchedule());
             System.scheduleBatch(new MyBatch(), 'x', 1);
-        }
-    }
-
-    /**
-     * @description - Retrieves the global describe information for an object inside a loop.
-     * @notes - This is a sample method for demonstration purposes.
-     * @example - getGlobalDescribeInLoopCorrected();
-     */
-    public void getGlobalDescribeInLoopCorrected() {
-        Map<String, Schema.SObjectField> fieldMap = Schema.getGlobalDescribe().get(objectName).getDescribe().fields.getMap();
-        Set<String> fieldNameSet = new Set<String> {'Id'};
-        for (String fieldNameOrDefaultValue : fieldNameOrDefaultValueList) {
-            if (fieldMap.containsKey(fieldNameOrDefaultValue.trim())) {
-                fieldNameSet.add(fieldNameOrDefaultValue);
-            }
-        }
-    }
-
-    /**
-     * @description - Retrieves the describe information for multiple SObjects inside a loop.
-     * @notes - This is a sample method for demonstration purposes.
-     * @example - describeSObjectsInLoop();  
-     */
-    public void describeSObjectsInLoop() {
-        Map<String, Schema.SObjectField> fieldMap = Schema.describeSObjects(new List<String> { 'Account' })[0].fields.getMap();
-        Set<String> fieldNameSet = new Set<String> {'Id'};
-        for (String fieldNameOrDefaultValue : fieldNameOrDefaultValueList) {
-            if (fieldMap.containsKey(fieldNameOrDefaultValue.trim())) {
-                fieldNameSet.add(fieldNameOrDefaultValue);
-            }
         }
     }
 }
