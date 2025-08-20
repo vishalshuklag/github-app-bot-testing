@@ -9,7 +9,7 @@ public with sharing class PerformanceRules {
 
     public void databaseMethodInsideOfLoop(List<Account> accounts) {
         for (Account a : accounts) {
-            Database.insert(a, AccessLevel.SYSTEM_MODE);
+            Database.insert(a);
         }
     }
 
