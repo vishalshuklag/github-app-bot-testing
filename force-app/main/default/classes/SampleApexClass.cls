@@ -27,7 +27,6 @@ public class SampleApexClass {
     public void dmlInsideOfLoop() {
         for (Integer i = 0; i < 151; i++) {
             Account account;
-            // ...
             insert as user account; // PMD CHECK FOR THIS
         }
     }
