@@ -28,7 +28,7 @@ public class SampleApexClass {
         for (Integer i = 0; i < 151; i++) {
             Account account;
             // ...
-            insert as user account;
+            insert as user account; // PMD CHECK FOR THIS
         }
     }
 
@@ -94,4 +94,4 @@ public class SampleApexClass {
             System.scheduleBatch(new MyBatch(), 'x', 1);
         }
     }
-} 
+}
