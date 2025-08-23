@@ -24,17 +24,17 @@ public with sharing class PerformanceRules {
     }
  
     /**
- * @description Anti-pattern: Performs DML operations inside a loop using Database methods.
- * This approach will hit governor limits when processing large datasets.
- * 
- * @param accounts List of Account records to insert
- * @throws System.LimitException when DML governor limits are exceeded
- * 
- * @example
- * List<Account> accounts = new List<Account>();
- * // populate accounts list
- * new PerformanceRules().databaseMethodInsideOfLoop(accounts);
- */
+     * @description Anti-pattern: Performs DML operations inside a loop using Database methods.
+     * This approach will hit governor limits when processing large datasets.
+     * 
+     * @param accounts List of Account records to insert
+     * @throws System.LimitException when DML governor limits are exceeded
+     * 
+     * @example
+     * List<Account> accounts = new List<Account>();
+     * // populate accounts list
+     * new PerformanceRules().databaseMethodInsideOfLoop(accounts);
+     */
     public void databaseMethodInsideOfLoop(List<Account> accounts) {
         for (Account a : accounts) {
             Database.insert(a);
@@ -42,15 +42,15 @@ public with sharing class PerformanceRules {
     }
 
     /**
- * @description Anti-pattern: Performs DML operations inside a loop.
- * This method will fail after 150 iterations due to DML statement governor limits.
- * Demonstrates why bulk DML operations should be performed outside loops.
- * 
- * @throws System.LimitException when DML governor limits (150 statements) are exceeded
- * 
- * @example
- * new PerformanceRules().dmlInsideOfLoop();
- */
+     * @description Anti-pattern: Performs DML operations inside a loop.
+     * This method will fail after 150 iterations due to DML statement governor limits.
+     * Demonstrates why bulk DML operations should be performed outside loops.
+     * 
+     * @throws System.LimitException when DML governor limits (150 statements) are exceeded
+     * 
+     * @example
+     * new PerformanceRules().dmlInsideOfLoop();
+     */
     public void dmlInsideOfLoop() {
         for (Integer i = 0; i < 151; i++) {
             Account account;
