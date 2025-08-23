@@ -27,7 +27,7 @@ public with sharing class SecurityRules {
             return null;
         }
         c.Status__c = status;
-        update as system c;
+        update c;
         return c;
     }
 }
