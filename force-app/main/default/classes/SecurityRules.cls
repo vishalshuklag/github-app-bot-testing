@@ -26,7 +26,6 @@ public with sharing class SecurityRules {
         if (!Schema.sObjectType.Contact.fields.Status__c.isUpdateable()) {
             return null;
         }
-
         c.Status__c = status;
         update as system c;
         return c;
