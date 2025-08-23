@@ -62,13 +62,13 @@ public with sharing class PerformanceRules {
     }
 
     /**
- * @description Anti-pattern: Executes SOQL queries inside a loop.
- * This approach will hit the 100 SOQL query limit quickly and cause runtime exceptions.
- * Demonstrates why data should be queried once and processed in bulk.
- * 
- * @throws System.LimitException when SOQL query governor limits are exceeded
- * 
- * @example
+     * @description Anti-pattern: Executes SOQL queries inside a loop.
+     * This approach will hit the 100 SOQL query limit quickly and cause runtime exceptions.
+     * Demonstrates why data should be queried once and processed in bulk.
+     * 
+     * @throws System.LimitException when SOQL query governor limits are exceeded
+     * 
+     * @example
  * new PerformanceRules().soqlInsideOfLoop();
  */
     public void soqlInsideOfLoop() {
