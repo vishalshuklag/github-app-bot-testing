@@ -22,7 +22,7 @@ public with sharing class PerformanceRules {
 
         List<List<SObject>> searchList = [FIND 'map*' IN ALL FIELDS RETURNING Account (Id, Name), Contact, Opportunity, Lead]; // bad
     }
- 
+
     /**
      * @description Anti-pattern: Performs DML operations inside a loop using Database methods.
      * This approach will hit governor limits when processing large datasets.
@@ -69,8 +69,9 @@ public with sharing class PerformanceRules {
      * @throws System.LimitException when SOQL query governor limits are exceeded
      * 
      * @example
- * new PerformanceRules().soqlInsideOfLoop();
- */
+    * new PerformanceRules().soqlInsideOfLoop();
+    */
+    @testVisible
     public void soqlInsideOfLoop() {
         for (Integer i = 0; i < 10; i++) {
             List<Account> accounts = [SELECT Id FROM Account];
@@ -87,6 +88,7 @@ public with sharing class PerformanceRules {
  * @example
  * new PerformanceRules().soslInsideOfLoop();
  */
+@InvocableMethod(label='Label' description='Description' category='Category')
     public void soslInsideOfLoop() {
         for (Integer i = 0; i < 10; i++) {
             List<List<SObject>> searchList = [FIND 'map*' IN ALL FIELDS RETURNING Account (Id, Name), Contact, Opportunity, Lead];
