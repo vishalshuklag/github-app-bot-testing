@@ -35,6 +35,7 @@ public with sharing class PerformanceRules {
      * // populate accounts list
      * new PerformanceRules().databaseMethodInsideOfLoop(accounts);
      */
+    @AuraEnabled(cacheable=true)
     public void databaseMethodInsideOfLoop(List<Account> accounts) {
         for (Account a : accounts) {
             Database.insert(a);
@@ -51,6 +52,7 @@ public with sharing class PerformanceRules {
      * @example
      * new PerformanceRules().dmlInsideOfLoop();
      */
+    @auraEnabled(cacheable=true)
     public void dmlInsideOfLoop() {
         for (Integer i = 0; i < 151; i++) {
             Account account;
