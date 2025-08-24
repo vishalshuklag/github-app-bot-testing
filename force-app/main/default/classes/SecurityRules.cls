@@ -11,6 +11,12 @@ public with sharing class SecurityRules {
         Database.query('SELECT Id FROM Account' + t1);
     }
 
+    /**
+     * @description Demonstrates the use of named credentials for authentication.
+     * This method sets the Authorization header using a named credential.
+     * @param username The username for the named credential.
+     * @param password The password for the named credential.
+     */
     public void usingNamedCredentials(String username, String password) {
         Blob headerValue = Blob.valueOf(username + ':' + password);
         String authorizationHeader = 'BASIC ' + EncodingUtil.base64Encode(headerValue);
@@ -26,7 +32,6 @@ public with sharing class SecurityRules {
      * @throws System.LimitException when governor limits are exceeded
      * @example
      * Contact updatedContact = new SecurityRules().apexCrudViolations('New Status', '003XXXXXXXXXXXXXXX');
-     * 
      */
     public Contact apexCrudViolations(String status, String ID) {
 
