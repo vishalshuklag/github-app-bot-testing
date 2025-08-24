@@ -17,6 +17,17 @@ public with sharing class SecurityRules {
         req.setHeader('Authorization', authorizationHeader);
     }
 
+    /**
+     * @description Demonstrates CRUD operations with proper security enforcement.
+     * This method retrieves a Contact record with the specified ID and updates its status.
+     * @param status The new status to set on the Contact record.
+     * @param ID The ID of the Contact record to update.
+     * @return The updated Contact record, or null if the update is not allowed.
+     * @throws System.LimitException when governor limits are exceeded
+     * @example
+     * Contact updatedContact = new SecurityRules().apexCrudViolations('New Status', '003XXXXXXXXXXXXXXX');
+     * 
+     */
     public Contact apexCrudViolations(String status, String ID) {
 
         // validate you can actually query what you intend to retrieve
