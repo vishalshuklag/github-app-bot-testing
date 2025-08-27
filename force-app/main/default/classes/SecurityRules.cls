@@ -59,4 +59,16 @@ public with sharing class SecurityRules {
         update c;
         return c;
     }
+
+    // TODO:: ApexOpenRedirect
+    // Implement proper validation for the redirect URL
+    String unsafeLocation = ApexPage.getCurrentPage().getParameters.get('url_param');
+    PageReference page() {
+       return new PageReference(unsafeLocation);
+    }
+
+    // TODO:: ApexXSSFromURLParam
+    // Implement proper escaping for the URL parameter
+    String unescapedstring = ApexPage.getCurrentPage().getParameters.get('url_param');
+    String usedLater = unescapedstring;
 }
