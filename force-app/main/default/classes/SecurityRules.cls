@@ -2,6 +2,7 @@ public with sharing class SecurityRules {
     
     /**
      * @description Demonstrates the use of weak cryptographic practices.
+     * This method demonstrates how to use the Crypto class to encrypt and decrypt data.
      * @example
      * new SecurityRules().apexBadCrypto();
      */
