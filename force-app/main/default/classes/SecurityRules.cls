@@ -71,4 +71,6 @@ public with sharing class SecurityRules {
     // Implement proper escaping for the URL parameter
     String unescapedstring = ApexPage.getCurrentPage().getParameters.get('url_param');
     String usedLater = unescapedstring;
+
+    //TODO:: Add other security measures
 }
