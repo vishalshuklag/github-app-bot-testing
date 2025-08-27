@@ -65,7 +65,7 @@ public with sharing class SecurityRules {
     String unsafeLocation = ApexPage.getCurrentPage().getParameters.get('url_param');
     PageReference page() {
        return new PageReference(unsafeLocation);
-    }
+    } 
 
     // TODO:: ApexXSSFromURLParam
     // Implement proper escaping for the URL parameter
