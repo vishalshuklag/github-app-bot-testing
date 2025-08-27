@@ -1,5 +1,10 @@
 public with sharing class SecurityRules {
     
+    /**
+     * @description Demonstrates the use of weak cryptographic practices.
+     * @example
+     * new SecurityRules().apexBadCrypto();
+     */
     public void apexBadCrypto() {
         Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
         Blob hardCodedKey = Blob.valueOf('0000000000000000');
