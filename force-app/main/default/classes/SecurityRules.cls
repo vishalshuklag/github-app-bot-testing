@@ -7,6 +7,13 @@ public with sharing class SecurityRules {
         Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, hardCodedIV, data);
     }
 
+    /**
+     * @description Demonstrates a SOQL injection vulnerability.
+     * @param t1 The dynamic part of the query, which may be untrusted user input.
+     * @example
+     * String userInput = ' OR Id = \'003XXXXXXXXXXXXXXX\'';
+     * new SecurityRules().soqlInjection(userInput);
+     */
     public void soqlInjection(String t1) {
         Database.query('SELECT Id FROM Account' + t1);
     }
